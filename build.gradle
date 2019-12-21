@@ -10,6 +10,7 @@ buildscript {
         room_version = '2.2.3'
         lifecycle_version = '2.2.0-rc03'
         multidex_version = "2.0.1"
+        gson_version = "2.8.6"
     }
     repositories {
         google()
@@ -31,8 +32,12 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        maven {
+
+            url "https://maven.google.com" // Google's Maven repository
+        }
         maven { url "https://jitpack.io" }
+        jcenter()
     }
 }
 

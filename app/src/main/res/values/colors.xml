@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#58857e</color>
+
     <color name="md_red50">#ffffebee</color>
     <color name="md_red100">#ffffcdd2</color>
     <color name="md_red200">#ffef9a9a</color>
