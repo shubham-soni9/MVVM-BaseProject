@@ -15,7 +15,7 @@ interface NotesDao {
 
     // Inserting the saved location into the database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(pinnedLocation: Note)
+    suspend fun insert(note: Note)
 
     // Getting all saved location from database
     @Query("SELECT * FROM pinned_location")

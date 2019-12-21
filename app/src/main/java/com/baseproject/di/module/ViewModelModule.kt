@@ -2,6 +2,7 @@ package com.baseproject.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.baseproject.ViewModelFactory
 import com.baseproject.di.ViewModelKey
 import com.baseproject.ui.home.HomeViewModel
 import dagger.Binds

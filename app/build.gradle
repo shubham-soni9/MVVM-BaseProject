@@ -62,7 +62,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
 
     // Room SQLite for data persistence
-    // Old Library version is used to support room-coroutines as all version should be same and room-coroutines latest version is 2.1.0-alpha04
+    // Old Library version is used to support room-coroutines as all version should be same
+    // and room-coroutines latest version is 2.1.0-alpha04
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-coroutines:2.1.0-alpha04"
