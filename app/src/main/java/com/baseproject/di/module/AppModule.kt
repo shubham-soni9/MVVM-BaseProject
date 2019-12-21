@@ -4,12 +4,17 @@ import android.content.Context
 import androidx.room.Room
 import com.baseproject.BaseApplication
 import com.baseproject.common.Constants
-import com.baseproject.di.qualifier.DatabaseInfo
 import com.baseproject.data.local.AppDatabase
-import com.baseproject.data.local.AppDbHelper
-import com.baseproject.data.local.DbHelper
+import com.baseproject.data.remote.ApiService
+import com.baseproject.data.remote.RequestInterceptor
+import com.baseproject.di.qualifier.DatabaseInfo
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -18,6 +23,31 @@ import javax.inject.Singleton
  */
 @Module(includes = [ViewModelModule::class])
 class AppModule {
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        val okHttpClient = OkHttpClient.Builder();
+        okHttpClient.connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.readTimeout(Constants.READ_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.writeTimeout(Constants.WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.addInterceptor(RequestInterceptor());
+        okHttpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+        return okHttpClient.build();
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit( okHttpClient:OkHttpClient):ApiService
+    {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build();
+
+        return retrofit.create(ApiService::class.java);
+    }
 
     @Provides
     @Named("application_context")
@@ -38,11 +68,5 @@ class AppModule {
     @DatabaseInfo
     fun provideDatabaseName(): String {
         return Constants.DB_NAME
-    }
-
-    @Provides
-    @Singleton
-    fun provideDbHelper(mAppDataBase: AppDatabase): DbHelper {
-        return AppDbHelper(mAppDataBase)
     }
 }

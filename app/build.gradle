@@ -83,10 +83,20 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Library for remote call
+
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
     // Google Gson library for parsing data
     implementation "com.google.code.gson:gson:$gson_version"
+
+    //Leak Canary for memory leakage detection
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
 
     // Unit Test Dependencies
     testImplementation 'junit:junit:4.12'
