@@ -1,7 +1,6 @@
+@file:JvmName("Codes")
+@file:JvmMultifileClass
+
 package com.baseproject.common
 
-object Codes {
-    object RequestCode {
-        const val REQ_HOME_ACTIVITY = 100
-    }
-}
+const val REQ_HOME_ACTIVITY = 100

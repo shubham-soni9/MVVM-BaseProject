@@ -2,7 +2,7 @@ package com.baseproject.util
 
 import android.content.Context
 import android.os.Bundle
-import com.baseproject.common.Config
+import com.baseproject.common.isRelease
 import com.google.firebase.analytics.FirebaseAnalytics
 
 object FireAnalytics {
@@ -14,7 +14,7 @@ object FireAnalytics {
     }
 
     fun logFirebaseEvent(event: String, params: Bundle) {
-        if(Config.isRelease()) mFirebaseAnalytics.logEvent(event, params)
+        if(isRelease()) mFirebaseAnalytics.logEvent(event, params)
     }
 
     /**

@@ -3,7 +3,7 @@ package com.baseproject.di.module
 import android.content.Context
 import androidx.room.Room
 import com.baseproject.BaseApplication
-import com.baseproject.common.Constants
+import com.baseproject.common.*
 import com.baseproject.data.local.AppDatabase
 import com.baseproject.data.remote.ApiService
 import com.baseproject.data.remote.RequestInterceptor
@@ -28,9 +28,9 @@ class AppModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val okHttpClient = OkHttpClient.Builder();
-        okHttpClient.connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
-        okHttpClient.readTimeout(Constants.READ_TIMEOUT, TimeUnit.MILLISECONDS);
-        okHttpClient.writeTimeout(Constants.WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient.writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
         okHttpClient.addInterceptor(RequestInterceptor());
         okHttpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         return okHttpClient.build();
@@ -38,10 +38,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit( okHttpClient:OkHttpClient):ApiService
-    {
+    fun provideRetrofit(okHttpClient: OkHttpClient): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(REST_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build();
@@ -67,6 +66,6 @@ class AppModule {
     @Provides
     @DatabaseInfo
     fun provideDatabaseName(): String {
-        return Constants.DB_NAME
+        return ROOM_DATABASE_NAME
     }
 }

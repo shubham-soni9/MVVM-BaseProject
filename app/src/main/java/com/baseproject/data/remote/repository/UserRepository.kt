@@ -2,10 +2,10 @@ package com.baseproject.data.remote.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import com.baseproject.common.ApiKeys.REQ_INCLUDE
-import com.baseproject.common.ApiKeys.REQ_PAGE
-import com.baseproject.common.ApiKeys.REQ_RESULTS
-import com.baseproject.common.ApiKeys.REQ_SEED
+import com.baseproject.common.REQ_INCLUDE
+import com.baseproject.common.REQ_PAGE
+import com.baseproject.common.REQ_RESULTS
+import com.baseproject.common.REQ_SEED
 import com.baseproject.data.local.dao.UserDao
 import com.baseproject.data.local.table.UserEntity
 import com.baseproject.data.remote.ApiService

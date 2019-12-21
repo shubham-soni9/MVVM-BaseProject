@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import androidx.multidex.MultiDex
-import com.baseproject.common.Config
+import com.baseproject.common.isRelease
 import com.baseproject.di.component.DaggerAppComponent
 import com.baseproject.util.FireAnalytics
 import com.baseproject.util.Prefs
@@ -29,7 +29,7 @@ class BaseApplication : DaggerApplication() {
             .setUseDefaultSharedPreference(true)
             .build()
 
-        if (Config.isRelease()) {
+        if (isRelease()) {
             FireAnalytics.Builder().setContext(this).build()
         } else {
             Timber.uprootAll()

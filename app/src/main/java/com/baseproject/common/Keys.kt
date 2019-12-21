@@ -1,12 +1,11 @@
+@file:JvmName("Keys")
+@file:JvmMultifileClass
+
 package com.baseproject.common
 
-object Keys {
+// Extras Keys
+const val EXTRAS_TOKEN = "token"
 
-    object Extras {
-        const val TOKEN = "token"
-    }
+// Keys for storing data inside preferences
+const val PREFS_KEY = "save_key"
 
-    object Prefs {
-        const val SAVE_KEY = "save_key"
-    }
-}
