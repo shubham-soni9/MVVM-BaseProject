@@ -2,14 +2,15 @@ package com.baseproject.data.remote
 
 import com.baseproject.data.remote.model.PopularUserResponse
 import retrofit2.Call
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.GET
+import retrofit2.http.QueryMap
 
+/**
+ * Provide request and response type information of REST APIS
+ */
 interface ApiService {
 
-    @FormUrlEncoded
-    @POST(ApiInventory.GENERAL_API)
-    fun getUsers(@FieldMap map: Map<String, String>): Call<PopularUserResponse>
+    @GET(GENERAL_API)
+    fun getUsers(@QueryMap map: Map<String, String>): Call<PopularUserResponse>
 
 }

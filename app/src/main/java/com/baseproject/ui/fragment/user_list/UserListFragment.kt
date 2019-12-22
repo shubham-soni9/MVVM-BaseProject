@@ -31,7 +31,7 @@ class UserListFragment : BaseFragment<UserListViewModel, FragmentListUserBinding
     override fun onArticleClicked(userEntity: UserEntity) {
         if (null != activity) {
             val args = Bundle()
-            args.putParcelable(BUNDLE_KEY_USER_ID, userEntity.id)
+            args.putString(BUNDLE_KEY_USER_ID, userEntity.login.uuid)
         }
     }
 
@@ -54,20 +54,16 @@ class UserListFragment : BaseFragment<UserListViewModel, FragmentListUserBinding
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mViewModel.users
-            .observe(
-                this,
-                Observer { listResource: Resource<List<UserEntity?>?>? ->
-                    if (null != listResource && (listResource.status === Status.ERROR || listResource.status === Status.SUCCESS)) {
-                        dataBinding.loginProgress.visibility = View.GONE
-                    }
-                    dataBinding.resourceModel = listResource
-                    // If the cached data is already showing then no need to show the error
-                    if (null != dataBinding.rvUsers.adapter && dataBinding.rvUsers.adapter!!.itemCount > 0) {
-                        dataBinding.errorText.visibility = View.GONE
-                    }
-                }
-            )
+        mViewModel.users.observe(this, Observer { listResource: Resource<List<UserEntity>> ->
+            if (listResource.status === Status.ERROR || listResource.status === Status.SUCCESS) {
+                dataBinding.loginProgress.visibility = View.GONE
+            }
+            dataBinding.resourceModel = listResource
+            // If the cached data is already showing then no need to show the error
+            if (null != dataBinding.rvUsers.adapter && dataBinding.rvUsers.adapter!!.itemCount > 0) {
+                dataBinding.errorText.visibility = View.GONE
+            }
+        })
     }
 
     companion object {

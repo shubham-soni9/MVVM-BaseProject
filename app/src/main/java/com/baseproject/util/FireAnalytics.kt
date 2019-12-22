@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.baseproject.common.isRelease
 import com.google.firebase.analytics.FirebaseAnalytics
 
+/**
+ * Helper class for logging firebase events
+ */
 object FireAnalytics {
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
 
@@ -14,7 +17,7 @@ object FireAnalytics {
     }
 
     fun logFirebaseEvent(event: String, params: Bundle) {
-        if(isRelease()) mFirebaseAnalytics.logEvent(event, params)
+        if (isRelease()) mFirebaseAnalytics.logEvent(event, params)
     }
 
     /**

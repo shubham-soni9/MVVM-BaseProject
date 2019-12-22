@@ -19,6 +19,9 @@ import retrofit2.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
 
+/**
+ * Handling network and local database calls
+ */
 abstract class NetworkBoundResource<T, V> @MainThread protected constructor(private var baseContext: Context) {
     private val result = MediatorLiveData<Resource<T>>()
 

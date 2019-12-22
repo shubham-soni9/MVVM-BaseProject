@@ -1,10 +1,14 @@
 package com.baseproject.data.local
 
 import androidx.room.TypeConverter
-import com.nytimes.articles.data.model.ID
+import com.baseproject.util.generateUUID
+import com.nytimes.articles.data.model.Login
 import com.nytimes.articles.data.model.Name
 import com.nytimes.articles.data.model.Picture
 
+/**
+ * Converter method for custom object in room library
+ */
 class Converters {
 
     @TypeConverter
@@ -29,12 +33,12 @@ class Converters {
     }
 
     @TypeConverter
-    fun fromID(value: String): ID {
-        return ID(value)
+    fun fromLogin(uuid: String): Login {
+        return Login(uuid)
     }
 
     @TypeConverter
-    fun toID(id: ID): String {
-        return id.value
+    fun toLogin(login: Login): String {
+        return login.uuid
     }
 }

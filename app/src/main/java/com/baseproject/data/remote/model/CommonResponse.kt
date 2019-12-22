@@ -4,6 +4,10 @@ import com.google.gson.Gson
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Handling CommonResponse from the server
+ * Should be used when server is sending standard response in multiple APIS
+ */
 class CommonResponse<T> {
     @SerializedName("status")
     @Expose

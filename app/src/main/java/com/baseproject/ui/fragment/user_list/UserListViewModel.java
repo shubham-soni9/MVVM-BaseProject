@@ -13,11 +13,6 @@ import javax.inject.Inject;
 
 /**
  * Article List view model
- * <p>
- * Author: Lajesh D
- * Email: lajeshds2007@gmail.com
- * Created: 7/24/2018
- * Modified: 7/24/2018
  */
 public class UserListViewModel extends ViewModel {
     private final LiveData<Resource<List<UserEntity>>> popularArticles;

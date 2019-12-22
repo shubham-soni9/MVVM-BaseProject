@@ -96,6 +96,18 @@ dependencies {
     //Leak Canary for memory leakage detection
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
 
+    // For Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:$paging_version"
+    // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:$paging_version"
+    // For Kotlin use paging-rxjava2-ktx
+
     // Unit Test Dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

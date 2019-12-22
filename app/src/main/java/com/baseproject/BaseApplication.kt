@@ -14,6 +14,9 @@ import dagger.android.support.DaggerApplication
 import timber.log.Timber
 import javax.inject.Inject
 
+/**
+ * Custom Application class for initializing components at application level
+ */
 class BaseApplication : DaggerApplication() {
 
     @Inject

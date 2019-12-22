@@ -13,5 +13,5 @@ import com.baseproject.data.local.table.UserEntity
 abstract class AppDatabase : RoomDatabase() {
 
     // Providing Dao of location database
-    abstract fun noteDao(): UserDao
+    abstract fun userDao(): UserDao
 }

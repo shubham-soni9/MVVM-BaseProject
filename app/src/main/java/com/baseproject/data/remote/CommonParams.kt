@@ -2,6 +2,9 @@ package com.baseproject.data.remote
 
 import java.util.*
 
+/**
+ * Provide HashMap for request body.
+ */
 class CommonParams private constructor(builder: Builder) {
     val map: HashMap<String, String>
 

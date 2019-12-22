@@ -6,7 +6,7 @@ import com.baseproject.common.REQ_INCLUDE
 import com.baseproject.common.REQ_PAGE
 import com.baseproject.common.REQ_RESULTS
 import com.baseproject.common.REQ_SEED
-import com.baseproject.data.local.dao.UserDao
+import com.baseproject.data.local.AppDatabase
 import com.baseproject.data.local.table.UserEntity
 import com.baseproject.data.remote.ApiService
 import com.baseproject.data.remote.CommonParams
@@ -15,10 +15,15 @@ import com.baseproject.data.remote.model.PopularUserResponse
 import com.baseproject.data.remote.model.Resource
 import retrofit2.Call
 import javax.inject.Inject
+import javax.inject.Named
 
+/**
+ * Helper Class for getting data from network or local database
+ */
 open class UserRepository @Inject internal constructor(
+    @Named("application_context")
     private val baseContext: Context,
-    private val articleDao: UserDao,
+    private val appDatabase: AppDatabase,
     private val apiService: ApiService
 ) {
 
@@ -27,13 +32,13 @@ open class UserRepository @Inject internal constructor(
             .add(REQ_PAGE, page)
             .add(REQ_SEED, "abc")
             .add(REQ_RESULTS, 10)
-            .add(REQ_INCLUDE, "name,id,email,picture")
+            .add(REQ_INCLUDE, "name,email,picture,login")
             .build()
 
         return object : NetworkBoundResource<List<UserEntity>, PopularUserResponse>(baseContext) {
 
             override suspend fun loadFromDb(): LiveData<List<UserEntity>> {
-                return articleDao.loadPopularUser();
+                return appDatabase.userDao().loadPopularUser();
             }
 
             override fun createCall(): Call<PopularUserResponse> {
@@ -41,7 +46,7 @@ open class UserRepository @Inject internal constructor(
             }
 
             override suspend fun saveCallResult(item: PopularUserResponse) {
-                articleDao.saveUsers(item.popularUserEntities);
+                appDatabase.userDao().saveUsers(item.popularUserEntities);
             }
         }.asLiveData;
 

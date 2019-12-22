@@ -7,6 +7,9 @@ import android.content.SharedPreferences
 import android.text.TextUtils
 import java.util.*
 
+/**
+ * Provide helper class to store data in shared preferences
+ */
 object Prefs {
     private const val DEFAULT_SUFFIX = "_preferences"
     private const val LENGTH = "#LENGTH"
