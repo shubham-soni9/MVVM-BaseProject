@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="userEntity"
             type="com.baseproject.data.local.table.UserEntity" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -34,7 +36,7 @@
                 android:layout_gravity="top"
                 android:layout_margin="10dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_profile_placeholder" />
+                app:imageUrl="@{userEntity.picture.large}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
