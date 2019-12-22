@@ -5,6 +5,9 @@ import com.baseproject.BR
 import com.baseproject.R
 import com.baseproject.databinding.ActivityHomeBinding
 import com.baseproject.ui.base.BaseActivity
+import com.baseproject.ui.fragment.user_list.UserListFragment
+import com.baseproject.util.TRANSITION_NONE
+import com.baseproject.util.replaceFragment
 
 class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun getLayoutRes(): Int {
@@ -13,7 +16,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        replaceFragment(
+            this,
+            UserListFragment.newInstance(),
+            R.id.fragContainer,
+            false,
+            TRANSITION_NONE
+        );
     }
+
     override fun getViewModel(): Class<HomeViewModel> {
         return HomeViewModel::class.java
     }
