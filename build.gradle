@@ -4,15 +4,15 @@ buildscript {
     ext {
         kotlin_version = '1.3.61'
         architecture_component_version = '2.0.0'
-        retrofit_version = '2.3.0'
-        dagger_version = '2.24'
+        retrofit_version = '2.9.0'
+        dagger_version = '2.31'
         lottie_version = '3.0.7'
         room_version = '2.1.0-alpha04'
         lifecycle_version = '2.2.0-rc03'
         multidex_version = "2.0.1"
         gson_version = "2.8.6"
-        glide_version = "4.10.0"
-        paging_version = "2.1.1"
+        glide_version = "4.11.0"
+        paging_version = "3.1.0"
 
     }
     repositories {
