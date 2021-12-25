@@ -1,5 +1,6 @@
 package com.baseproject.di.module
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.baseproject.BaseApplication
@@ -10,6 +11,8 @@ import com.baseproject.data.remote.RequestInterceptor
 import com.baseproject.di.qualifier.DatabaseInfo
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,7 +24,8 @@ import javax.inject.Singleton
 /**
  * Module for application level dependencies
  */
-@Module(includes = [ViewModelModule::class])
+@Module
+@InstallIn(SingletonComponent::class)
 class AppModule {
 
     @Provides
@@ -51,7 +55,7 @@ class AppModule {
     @Provides
     @Named("application_context")
     @Singleton
-    fun provideContext(application: BaseApplication): Context {
+    fun provideContext(application: Application): Context {
         return application.applicationContext
     }
 

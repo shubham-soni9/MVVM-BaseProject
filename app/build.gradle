@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
@@ -40,17 +41,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0-alpha01'
     implementation "androidx.multidex:multidex:$multidex_version"
 
-    // Dagger 2
-    implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Android Architecture Components
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // Room SQLite for data persistence
     // Old Library version is used to support room-coroutines as all version should be same

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baseproject.R
@@ -15,12 +16,18 @@ import com.baseproject.databinding.FragmentListUserBinding
 import com.baseproject.ui.adapter.UserListAdapter
 import com.baseproject.ui.base.BaseFragment
 import com.baseproject.ui.callback.UserListCallback
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * The article list fragment which will list the popular articles
  */
+
+@AndroidEntryPoint
 class UserListFragment : BaseFragment<UserListViewModel, FragmentListUserBinding>(),
     UserListCallback {
+
+    val viewModel by viewModels<UserListViewModel>()
+
     public override fun getViewModel(): Class<UserListViewModel> {
         return UserListViewModel::class.java
     }
@@ -54,7 +61,7 @@ class UserListFragment : BaseFragment<UserListViewModel, FragmentListUserBinding
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mViewModel.users.observe(viewLifecycleOwner, Observer { listResource: Resource<List<UserEntity>> ->
+        viewModel.users.observe(viewLifecycleOwner, Observer { listResource: Resource<List<UserEntity>> ->
             if (listResource.status === Status.ERROR || listResource.status === Status.SUCCESS) {
                 dataBinding.loginProgress.visibility = View.GONE
             }
