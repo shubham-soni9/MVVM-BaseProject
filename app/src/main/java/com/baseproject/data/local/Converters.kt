@@ -28,7 +28,7 @@ class Converters {
 
     @TypeConverter
     fun toName(name: Name): String {
-        return name.title + "," + name.first + "," + name.last;
+        return name.title + "," + name.first + "," + name.last
     }
 
     @TypeConverter

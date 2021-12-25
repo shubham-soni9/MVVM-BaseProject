@@ -24,7 +24,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
             R.id.fragContainer,
             false,
             TRANSITION_NONE
-        );
+        )
     }
 
     override fun getViewModel(): Class<HomeViewModel> {

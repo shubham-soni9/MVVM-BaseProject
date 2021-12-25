@@ -52,8 +52,8 @@ fun replaceFragment(
         TRANSITION_NONE -> transaction.setCustomAnimations(0, 0)
         else -> transaction.setCustomAnimations(0, 0)
     }
-    if (addToBackStack) transaction.addToBackStack(fragment::class.java.getCanonicalName())
-    transaction.replace(id, fragment, fragment::class.java.getCanonicalName())
+    if (addToBackStack) transaction.addToBackStack(fragment::class.java.canonicalName)
+    transaction.replace(id, fragment, fragment::class.java.canonicalName)
     transaction.commit()
 }
 

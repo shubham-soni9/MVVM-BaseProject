@@ -31,13 +31,13 @@ class AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        val okHttpClient = OkHttpClient.Builder();
-        okHttpClient.connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
-        okHttpClient.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
-        okHttpClient.writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
-        okHttpClient.addInterceptor(RequestInterceptor());
-        okHttpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
-        return okHttpClient.build();
+        val okHttpClient = OkHttpClient.Builder()
+        okHttpClient.connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
+        okHttpClient.readTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS)
+        okHttpClient.writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
+        okHttpClient.addInterceptor(RequestInterceptor())
+        okHttpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        return okHttpClient.build()
     }
 
     @Provides
@@ -47,9 +47,9 @@ class AppModule {
             .baseUrl(REST_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
-            .build();
+            .build()
 
-        return retrofit.create(ApiService::class.java);
+        return retrofit.create(ApiService::class.java)
     }
 
     @Provides

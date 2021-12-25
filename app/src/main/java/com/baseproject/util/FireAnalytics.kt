@@ -52,6 +52,6 @@ object FireAnalytics {
     }
 
     private fun init(mContext: Context) {
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext)
     }
 }

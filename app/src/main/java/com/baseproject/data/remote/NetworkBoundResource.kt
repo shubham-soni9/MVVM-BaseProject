@@ -26,7 +26,7 @@ abstract class NetworkBoundResource<T, V> @MainThread protected constructor(priv
     private val result = MediatorLiveData<Resource<T>>()
 
     init {
-        result.setValue(Resource.loading(null))
+        result.value = Resource.loading(null)
         // Always load the data from DB initially so that we have
         CoroutineScope(Dispatchers.IO).launch {
             val dbSource = loadFromDb()

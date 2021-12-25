@@ -14,6 +14,6 @@ const val API_KEY = "abcd"
 const val REST_API_BASE_URL: String = "https://randomuser.me/"
 
 // Rest API Timeouts
-const val CONNECT_TIMEOUT = 30000L;
-const val READ_TIMEOUT = 30000L;
-const val WRITE_TIMEOUT = 30000L;
+const val CONNECT_TIMEOUT = 30000L
+const val READ_TIMEOUT = 30000L
+const val WRITE_TIMEOUT = 30000L

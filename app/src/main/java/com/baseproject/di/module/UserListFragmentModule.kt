@@ -12,6 +12,4 @@ import javax.inject.Named
 
 @Module
 @InstallIn(FragmentComponent::class)
-class UserListFragmentModule {
-
-}
+class UserListFragmentModule

@@ -48,7 +48,7 @@ open class UserRepository @Inject internal constructor(
             override suspend fun saveCallResult(item: PopularUserResponse) {
                 appDatabase.userDao().saveUsers(item.popularUserEntities)
             }
-        }.asLiveData;
+        }.asLiveData
 
     }
 }
