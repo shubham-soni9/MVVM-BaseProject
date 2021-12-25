@@ -1,7 +1,7 @@
-package com.nytimes.articles.data.model
+package com.baseproject.data.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Helper Parcelable model data classes

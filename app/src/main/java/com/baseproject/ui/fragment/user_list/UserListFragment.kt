@@ -54,7 +54,7 @@ class UserListFragment : BaseFragment<UserListViewModel, FragmentListUserBinding
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mViewModel.users.observe(this, Observer { listResource: Resource<List<UserEntity>> ->
+        mViewModel.users.observe(viewLifecycleOwner, Observer { listResource: Resource<List<UserEntity>> ->
             if (listResource.status === Status.ERROR || listResource.status === Status.SUCCESS) {
                 dataBinding.loginProgress.visibility = View.GONE
             }

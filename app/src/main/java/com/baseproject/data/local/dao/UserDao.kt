@@ -17,5 +17,5 @@ interface UserDao {
     fun loadPopularUser(): LiveData<List<UserEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveUsers(userEntities: List<UserEntity>);
+    suspend fun saveUsers(userEntities: List<UserEntity>)
 }

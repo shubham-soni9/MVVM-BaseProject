@@ -7,10 +7,10 @@ import androidx.room.TypeConverters
 import com.baseproject.data.local.Converters
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.nytimes.articles.data.model.Login
-import com.nytimes.articles.data.model.Name
-import com.nytimes.articles.data.model.Picture
-import kotlinx.android.parcel.Parcelize
+import com.baseproject.data.model.Login
+import com.baseproject.data.model.Name
+import com.baseproject.data.model.Picture
+import kotlinx.parcelize.Parcelize
 
 /**
  * Table of saving location into the table pinned_location

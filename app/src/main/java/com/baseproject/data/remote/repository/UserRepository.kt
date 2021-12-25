@@ -38,15 +38,15 @@ open class UserRepository @Inject internal constructor(
         return object : NetworkBoundResource<List<UserEntity>, PopularUserResponse>(baseContext) {
 
             override suspend fun loadFromDb(): LiveData<List<UserEntity>> {
-                return appDatabase.userDao().loadPopularUser();
+                return appDatabase.userDao().loadPopularUser()
             }
 
             override fun createCall(): Call<PopularUserResponse> {
-                return apiService.getUsers(commonParams.map);
+                return apiService.getUsers(commonParams.map)
             }
 
             override suspend fun saveCallResult(item: PopularUserResponse) {
-                appDatabase.userDao().saveUsers(item.popularUserEntities);
+                appDatabase.userDao().saveUsers(item.popularUserEntities)
             }
         }.asLiveData;
 

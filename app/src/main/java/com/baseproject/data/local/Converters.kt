@@ -1,10 +1,9 @@
 package com.baseproject.data.local
 
 import androidx.room.TypeConverter
-import com.baseproject.util.generateUUID
-import com.nytimes.articles.data.model.Login
-import com.nytimes.articles.data.model.Name
-import com.nytimes.articles.data.model.Picture
+import com.baseproject.data.model.Login
+import com.baseproject.data.model.Name
+import com.baseproject.data.model.Picture
 
 /**
  * Converter method for custom object in room library

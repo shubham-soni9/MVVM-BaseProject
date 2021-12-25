@@ -13,7 +13,7 @@ class RequestInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val originalHttpUrl = originalRequest.url()
+        val originalHttpUrl = originalRequest.url
         val url = originalHttpUrl.newBuilder().build()
         val request = originalRequest.newBuilder().url(url).build()
         return chain.proceed(request)

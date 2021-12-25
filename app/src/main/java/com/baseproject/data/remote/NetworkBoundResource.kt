@@ -77,7 +77,7 @@ abstract class NetworkBoundResource<T, V> @MainThread protected constructor(priv
         } else if (error is IOException) {
             baseContext.getString(R.string.networkError)
         } else if (error is HttpException) {
-            error.response().message()
+            error.response()?.message()?:""
         } else {
             baseContext.getString(R.string.unknownError)
         }
